@@ -5,6 +5,7 @@ import {
 	Component,
 	ComponentRef,
 	OnDestroy,
+	OnInit,
 	ViewChild,
 	ViewContainerRef,
 	inject,
@@ -53,7 +54,7 @@ import { AnimeDetailsComponent } from './anime-details.component';
 		</ng-template>
 	`,
 })
-export class AnimeDetailsContainerComponent implements OnDestroy {
+export class AnimeDetailsContainerComponent implements OnInit, OnDestroy {
 	route = inject(ActivatedRoute);
 	animeStore = inject(AnimeService);
 	dialog = inject(MatDialog);
@@ -70,6 +71,10 @@ export class AnimeDetailsContainerComponent implements OnDestroy {
 
 	ngOnDestroy(): void {
 		this.dynamicComponentRef?.destroy();
+	}
+
+	ngOnInit(): void {
+		console.log('ngOnInit');
 	}
 
 	renderDynamic(component: 'shark' | 'cow') {

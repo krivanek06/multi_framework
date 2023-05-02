@@ -6,7 +6,7 @@
 
     <div class="flex flex-col gap-4">
       <GeneralCard
-        v-for="data in animeStore.getStoredAnime"
+        v-for="data of animeStore.getStoredAnime"
         :key="data.selectedAnime.popularity"
         :title="data.selectedAnime.title"
         :show-button-delete="true"

@@ -44,6 +44,10 @@ onMounted(() => {
   console.log("mounted");
 });
 
+onUnmounted(() => {
+  console.log("destroyed");
+});
+
 const onModalDisplay = () => {
   showModal.value = true;
 };
