@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounce } from 'src/app/composable/debounce';
 import { useValidator } from '../../composable/useValidator';
 import { AnimeData } from '../../models/api-anime-data.model';
 import { AnimeService } from '../../services/anime.service';
@@ -23,8 +24,8 @@ import { AnimeService } from '../../services/anime.service';
 
 			<!-- search text input  -->
 			<input
-				[value]="searchRef()"
-				(input)="saveSearchValue($event)"
+				[ngModel]="searchRef()"
+				(ngModelChange)="searchRef.set($event)"
 				type="text"
 				name="searchRef"
 				placeholder="Search.."
@@ -65,16 +66,24 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 	onChange: (value: AnimeData) => void = () => {};
 	onTouched = () => {};
 
+	fetchAnime = debounce((search: string, searchSelectedRef: boolean) => {
+		// fetching anime data from api, don't fetch if I already selected
+		if (this.searchRef().length > 3 && !this.searchSelectedRef()) {
+			console.log('effect running');
+			this.searchSelectedRef.set(false);
+			this.searchLoadingRef.set(false);
+			this.animeService.fetchAnime(search);
+		}
+	}, 500);
+
 	effectRef = effect(
 		() => {
-			//console.log('effect', this.searchSelectedRef());
-			// fetching anime data from api, don't fetch if I already selected
-			if (this.searchRef().length > 3 && !this.searchSelectedRef()) {
-				console.log('eefect running');
-				this.searchSelectedRef.set(false);
-				this.searchLoadingRef.set(false);
-				this.animeService.fetchAnime(this.searchRef());
-			}
+			console.log('effect');
+			// Store signal values (must be done syncronously)
+			const search = this.searchRef();
+			const searchSelectedRef = this.searchSelectedRef();
+
+			this.fetchAnime(search, searchSelectedRef);
 		},
 		{ allowSignalWrites: true }
 	);
@@ -100,11 +109,6 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 
 		return { selectedAnimeError };
 	});
-
-	saveSearchValue(event: Event) {
-		const value = (event.target as HTMLInputElement).value;
-		this.searchRef.set(value);
-	}
 
 	onInputKeyDown() {
 		console.log('onInputKeyDown');
