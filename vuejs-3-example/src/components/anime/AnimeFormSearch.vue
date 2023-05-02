@@ -1,5 +1,7 @@
 <template>
   <div class="relative flex flex-col">
+    Typing: {{ searchRef }}
+
     <!-- search text input -->
     <input v-model="searchRef" type="text" placeholder="Search.." @keydown="onInputKeyDown" />
 
