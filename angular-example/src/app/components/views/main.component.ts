@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { routerAnimation } from '../../animations/router-default';
 import { StickyDirective } from '../../directives/sticky.directive';
 import { AuthService } from '../../services/auth.service';
 import { BannerComponent } from '../shared/banner.component';
+import { routerAnimation } from './../../animations/router-default';
 
 @Component({
 	selector: 'app-main',
@@ -26,8 +26,11 @@ import { BannerComponent } from '../shared/banner.component';
 
 		<div class="mt-20 text-xl text-center">Welcome: {{ authenticationStore.getUser()?.name }}</div>
 
-		<main [@routerAnimation]="outlet" class="w-full max-w-[840px] mx-auto mt-20 px-3 sm:px-6">
-			<router-outlet #outlet="outlet"></router-outlet>
+		<main
+			[@routerAnimation]="o.isActivated ? o.activatedRoute : ''"
+			class="w-full max-w-[840px] mx-auto mt-20 px-3 sm:px-6"
+		>
+			<router-outlet #o="outlet"></router-outlet>
 		</main>
 	`,
 })
