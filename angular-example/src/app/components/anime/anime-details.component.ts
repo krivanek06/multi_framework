@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AnimeTypeStore } from '../../services/anime.service';
-import { hardMathEquation } from './../../models/api-anime-data.model';
+import { HardMathEquationPipe } from './../../pipes/hard-math-equation.pipe';
 
 @Component({
 	selector: 'app-anime-details',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, HardMathEquationPipe],
 	//changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<ng-template #reuseTemplate let-data="passingData">
@@ -67,15 +67,11 @@ import { hardMathEquation } from './../../models/api-anime-data.model';
 
 				<div class="w-[2px] bg-gray-300"></div>
 
-				<div>Equation: {{ hardMathEquation(animeData.selectedAnime.score ?? 0) }}</div>
+				<div>Equation: {{ animeData.selectedAnime.score | hardMathEquation }}</div>
 			</div>
 		</article>
 	`,
 })
 export class AnimeDetailsComponent {
 	@Input() animeData!: AnimeTypeStore;
-
-	hardMathEquation(value: number) {
-		return hardMathEquation(value);
-	}
 }
