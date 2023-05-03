@@ -3,20 +3,18 @@ export type DisplayForTime = DirectiveBinding<{ seconds: number }>;
 
 export const displayForTime = {
   mounted: (el: HTMLElement, binding: DisplayForTime, vnode: VNode) => {
-    const secondsToWait = binding.value.seconds ?? 5;
+    let secondsToWait = binding.value.seconds ?? 5;
 
     // Error: e-router.mjs:3451 ReferenceError: defineEmits is not defined
     // const emit = defineEmits<{
     //   (e: "remainingTime", value: number): void;
     // }>();
 
-    let timeoutCounter = 0;
-
     const interval = setInterval(() => {
-      timeoutCounter++;
-      console.log(timeoutCounter);
+      secondsToWait--;
+      console.log(secondsToWait);
 
-      const emittedValue = { detail: secondsToWait - timeoutCounter };
+      const emittedValue = { detail: secondsToWait };
 
       if (vnode.component) {
         vnode.component?.emit("remainingTime", emittedValue);
@@ -24,7 +22,7 @@ export const displayForTime = {
         vnode.el?.dispatchEvent(new CustomEvent("remainingTime", emittedValue));
       }
 
-      if (timeoutCounter > secondsToWait) {
+      if (secondsToWait === 0) {
         console.log("stop");
         // hide element
         el.style.display = "none";
