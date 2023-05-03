@@ -10,7 +10,9 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<div class="fixed inset-0 z-10 p-6 overflow-y-auto bg-black bg-opacity-50" role="dialog" aria-modal="true">
-			<div class="p-4 min-w-[420px] max-w-[420px] bg-gray-400 rounded-lg mx-auto mt-[30%]">
+			<div
+				class="p-4 min-w-[420px] max-w-[420px] bg-gray-400 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+			>
 				<textarea
 					[ngModel]="message()"
 					(ngModelChange)="message.set($event)"
