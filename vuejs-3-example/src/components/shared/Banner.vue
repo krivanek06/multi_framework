@@ -14,8 +14,7 @@
 const props = defineProps({
   bannerTime: {
     type: Number,
-    required: false,
-    default: 6,
+    required: true,
     validator: (value: number) => value > 0
   }
 });

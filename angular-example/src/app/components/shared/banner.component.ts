@@ -17,5 +17,5 @@ import { HideAfterDirective } from '../../directives/hide-after.directive';
 	`,
 })
 export class BannerComponent {
-	@Input() bannerTime: number = 6;
+	@Input({ required: true }) bannerTime!: number;
 }
