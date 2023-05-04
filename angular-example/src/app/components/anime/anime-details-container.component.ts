@@ -10,6 +10,7 @@ import {
 	ViewContainerRef,
 	inject,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { delay, filter, map, switchMap } from 'rxjs';
@@ -27,7 +28,7 @@ import { AnimeDetailsComponent } from './anime-details.component';
 	imports: [CommonModule, GeneralCardComponent, AnimeDetailsComponent, LoaderComponent, MatDialogModule],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
-		<ng-container *ngIf="selectedAnime$ | async as anime; else loading">
+		<ng-container *ngIf="selectedAnime() as anime; else loading">
 			<app-general-card
 				[title]="anime.selectedAnime.title"
 				[showEditButton]="true"
@@ -63,10 +64,12 @@ export class AnimeDetailsContainerComponent implements OnInit, OnDestroy {
 	@ViewChild('dynamicComponent', { read: ViewContainerRef }) dynamicComponent!: ViewContainerRef;
 	private dynamicComponentRef?: ComponentRef<any>;
 
-	selectedAnime$ = this.route.params.pipe(
-		map((params) => params['id']),
-		delay(3000),
-		switchMap(async (id) => this.animeStore.getAnimeTypeStoreById(id))
+	selectedAnime = toSignal(
+		this.route.params.pipe(
+			map((params) => params['id']),
+			delay(3000),
+			switchMap(async (id) => this.animeStore.getAnimeTypeStoreById(id))
+		)
 	);
 
 	ngOnDestroy(): void {
