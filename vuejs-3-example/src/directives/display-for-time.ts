@@ -17,8 +17,10 @@ export const displayForTime = {
       const emittedValue = { detail: secondsToWait };
 
       if (vnode.component) {
+        // emit event from component
         vnode.component?.emit("remainingTime", emittedValue);
       } else {
+        // emit event from element
         vnode.el?.dispatchEvent(new CustomEvent("remainingTime", emittedValue));
       }
 
