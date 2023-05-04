@@ -26,6 +26,7 @@ const routes: Routes = [
 				path: '',
 				component: MainComponent,
 				children: [
+					{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 					{
 						path: 'dashboard',
 						loadChildren: () =>

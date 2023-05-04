@@ -19,6 +19,7 @@ const router = createRouter({
       component: Main, // eager load
       children: [
         // lazy load
+        { path: "", redirect: "/dashboard" },
         { path: "dashboard", component: () => import("./components/views/DashboardView.vue") },
         { path: "anime/:id", component: () => import("./components/views/AnimeDetailsView.vue") }
       ]
