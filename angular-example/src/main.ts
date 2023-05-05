@@ -11,8 +11,6 @@ import {
 	withPreloading,
 } from '@angular/router';
 import { AppComponent } from './app/app.component';
-import { AnimeDetailsComponent } from './app/components/views/anime-details.component';
-import { DashboardComponent } from './app/components/views/dashboard.component';
 import { LoginViewComponent } from './app/components/views/login-view.component';
 import { MainComponent } from './app/components/views/main.component';
 import { AuthService } from './app/services/auth.service';
@@ -29,10 +27,7 @@ const routes: Routes = [
 					{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 					{
 						path: 'dashboard',
-						loadChildren: () =>
-							import('./app/components/views/dashboard.component').then((m) => [
-								{ path: '', component: DashboardComponent },
-							]),
+						loadChildren: () => import('./app/components/views/dashboard.component').then((m) => m.route),
 						canActivate: [
 							(route: ActivatedRouteSnapshot) => {
 								const authenticationFacadeService = inject(AuthService);
@@ -48,10 +43,7 @@ const routes: Routes = [
 					},
 					{
 						path: 'anime/:id',
-						loadChildren: () =>
-							import('./app/components/views/anime-details.component').then((m) => [
-								{ path: '', component: AnimeDetailsComponent },
-							]),
+						loadChildren: () => import('./app/components/views/anime-details.component').then((m) => m.route),
 					},
 				],
 			},

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { AnimeService, AnimeTypeStore } from '../../services/anime.service';
 import { AnimeDetailsComponent } from '../anime/anime-details.component';
 import { AnimeFormComponent } from '../anime/anime-form.component';
@@ -50,3 +50,10 @@ export class DashboardComponent {
 		this.animeStore.deleteAnimeFromStore(data);
 	}
 }
+
+export const route: Routes = [
+	{
+		path: '',
+		component: DashboardComponent,
+	},
+];
