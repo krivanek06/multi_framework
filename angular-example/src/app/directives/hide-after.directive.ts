@@ -1,9 +1,6 @@
 import { ChangeDetectorRef, Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 
 class HideAfterContext {
-	public get $implicit() {
-		return this.hideAfter;
-	}
 	public hideAfter = 0;
 	public counter = 0;
 }
