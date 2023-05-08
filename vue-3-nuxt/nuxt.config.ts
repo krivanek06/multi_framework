@@ -6,10 +6,10 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
-  // typescript: {
-  //   strict: true,
-  //   typeCheck: true
-  // },
+  typescript: {
+    strict: true,
+    typeCheck: true
+  },
   modules: [
     'nuxt-icon',
     '@nuxtjs/tailwindcss',

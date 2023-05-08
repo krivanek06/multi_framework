@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-console.log('lol');
+console.log('loaaal');
 </script>
 
 <style scoped></style>
