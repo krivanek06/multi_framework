@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <Icon name="🚀" />
 </template>
 
 <script setup lang="ts">
