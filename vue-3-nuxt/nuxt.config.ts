@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
     ['@pinia/nuxt',
       {
         autoImports: ['defineStore', 'acceptHMRUpdate']

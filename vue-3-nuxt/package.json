@@ -24,6 +24,7 @@
     "sass-loader": "^13.2.2"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.9"
+    "@pinia/nuxt": "^0.4.9",
+    "@vueuse/nuxt": "^10.1.2"
   }
 }
