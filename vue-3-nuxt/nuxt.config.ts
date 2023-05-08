@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/styles.scss'],
   modules: [
     'nuxt-icon',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    ['@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate']
+      }
+    ]
   ]
 })
