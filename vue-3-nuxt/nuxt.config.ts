@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true
   },
+  imports: {
+    dirs: ['stores', 'composable', 'models']
+  },
   modules: [
     'nuxt-icon',
     '@nuxtjs/tailwindcss',

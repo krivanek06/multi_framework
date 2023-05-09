@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <h1>Vue 3 + Nuxt</h1>
-    <Test />
-  </div>
+  <Html>
+    <Body>
+      <NuxtLayout>
+        <NuxtLoadingIndicator :height="5" :duration="3000" :throttle="400" />
+        <NuxtPage />
+      </NuxtLayout>
+    </Body>
+  </Html>
 </template>
