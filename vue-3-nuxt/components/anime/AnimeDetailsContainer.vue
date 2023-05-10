@@ -1,10 +1,10 @@
 <template>
   <section>
-    <GeneralCard :title="animeData.selectedAnime.title" :show-edit-button="true" @edit-clicked="onModalDisplay">
+    <SharedGeneralCard :title="animeData.selectedAnime.title" :show-edit-button="true" @edit-clicked="onModalDisplay">
       <AnimeDetails :anime-data="animeData" />
-    </GeneralCard>
+    </SharedGeneralCard>
 
-    <InputModal
+    <SharedInputModal
       :show-modal="showModal"
       :input-value="animeData.description"
       @confirm-clicked="(e: string) => onModalConfirm(e)"
@@ -62,15 +62,7 @@ const onModalConfirm = (newValue: string) => {
 };
 
 // used to display loading state for suspense
-const loadingPromise = () =>
-  new Promise<void>((resolve) => {
-    setTimeout(() => {
-      console.log('resolved promise');
-      resolve();
-    }, 3000);
-  });
-
-await loadingPromise();
+await $fetch('/api/anime/get-by-id');
 </script>
 
 <style scoped lang="sass"></style>

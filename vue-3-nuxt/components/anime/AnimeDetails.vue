@@ -14,11 +14,11 @@
 
   <article>
     <div class="flex gap-4 mb-2">
-      <div v-html="renderHtml2('User', animeData.user.name)"></div>
+      <ReuseTemplate name="User" :value="props.animeData.user.name" />
 
       <div v-if="props.animeData.description" class="w-[2px] bg-gray-300"></div>
 
-      <div v-if="props.animeData.description" v-html="renderHtml2('Description', props.animeData.description)"></div>
+      <ReuseTemplate v-if="props.animeData.description" name="Description" :value="props.animeData.description" />
     </div>
     <div class="flex gap-4">
       <ReuseTemplate name="Episodes" :value="props.animeData.selectedAnime.episodes" />
@@ -39,23 +39,13 @@
 </template>
 
 <script setup lang="ts">
+import { AnimeTypeStore, hardMathEquationMemo } from '~/types';
+
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{ name: string; value: string | number }>();
 
 const props = defineProps<{
   animeData: AnimeTypeStore;
 }>();
-
-const renderHtml2 = (name: string, value: string | number) => {
-  const colorClass = !props.animeData.isCool ? 'text-green-700' : 'text-yellow-700';
-  return `
-      <span class="text-base ${colorClass}">
-        ${name}:
-      </span>
-      <span>
-        ${value}
-      </span>
-  `;
-};
 </script>
 
 <style scoped></style>

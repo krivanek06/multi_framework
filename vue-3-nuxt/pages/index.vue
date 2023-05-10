@@ -5,7 +5,7 @@
     <div class="mt-12 mb-3">Total Selected Data: {{ animeStore.getStoredAnime.length }}</div>
 
     <div class="flex flex-col gap-4">
-      <GeneralCard
+      <SharedGeneralCard
         v-for="data of animeStore.getStoredAnime"
         :key="data.selectedAnime.popularity"
         :title="data.selectedAnime.title"
@@ -15,7 +15,7 @@
         @delete-clicked="onDelete(data)"
       >
         <AnimeDetails :anime-data="data" />
-      </GeneralCard>
+      </SharedGeneralCard>
     </div>
 
     <footer class="h-16"></footer>

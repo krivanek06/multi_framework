@@ -4,6 +4,7 @@ export const useAuthenticationStore = defineStore({
   id: 'authentication',
   state: () => {
     const user = useLocalStorage<User | null>('authenticationUser', {} as User);
+    console.log('read dom', user);
 
     return {
       user
