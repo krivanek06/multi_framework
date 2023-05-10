@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     AnimeDetailsView: typeof import('./src/components/views/AnimeDetailsView.vue')['default']
     AnimeForm: typeof import('./src/components/anime/AnimeForm.vue')['default']
     AnimeFormSearch: typeof import('./src/components/anime/AnimeFormSearch.vue')['default']
+    AnimeView: typeof import('./src/components/views/AnimeView.vue')['default']
     Banner: typeof import('./src/components/shared/Banner.vue')['default']
     CompCow: typeof import('./src/components/shared/CompCow.vue')['default']
     CompShark: typeof import('./src/components/shared/CompShark.vue')['default']

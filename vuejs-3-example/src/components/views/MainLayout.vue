@@ -1,6 +1,6 @@
 <template>
   <nav class="flex items-center justify-between w-full gap-4 p-4 bg-green-700">
-    <router-link to="/dashboard"> Dashboard </router-link>
+    <router-link to="/anime"> Dashboard </router-link>
     <router-link to="/login" @click="onLogOut"> Logout </router-link>
   </nav>
 
