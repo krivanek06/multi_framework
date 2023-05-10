@@ -6,10 +6,10 @@
     </nav>
 
     <!-- banner -->
-    <!-- <Banner :banner-time="8" /> -->
+    <SharedBanner :banner-time="8" />
 
     <!-- bottom sticky -->
-    <!-- <div v-sticky:bottom>This is a bottom</div> -->
+    <div v-sticky:bottom>This is a bottom</div>
 
     <h3 class="mt-20 text-xl text-center">Welcome: {{ authenticationStore.user?.name }}</h3>
 
