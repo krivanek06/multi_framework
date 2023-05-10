@@ -23,5 +23,8 @@ export const useAuthenticationStore = defineStore({
     getUser: (state) => {
       return state.user;
     }
+  },
+  persist: {
+    storage: persistedState.localStorage
   }
 });
