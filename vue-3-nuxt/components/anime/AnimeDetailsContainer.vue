@@ -31,17 +31,12 @@ import { AnimeTypeStore } from '~/types';
 import CompCow from '../shared/CompCow.vue';
 import CompShark from '../shared/CompShark.vue';
 
-const props = defineProps({
-  animeId: {
-    type: String,
-    required: true
-  }
-});
-
+const route = useRoute();
 const animeStore = useAnimeStore();
-const animeData = animeStore.getAnimeTypeStoreById(Number(props.animeId)) as AnimeTypeStore;
 
 const showModal = ref<boolean>(false);
+const animeId = route.params.id as string;
+const animeData = animeStore.getAnimeTypeStoreById(Number(animeId)) as AnimeTypeStore;
 
 const dynamicComponent = shallowRef();
 

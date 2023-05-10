@@ -14,14 +14,6 @@
     <h3 class="mt-20 text-xl text-center">Welcome: {{ authenticationStore.user?.name }}</h3>
 
     <main class="w-full max-w-[840px] mx-auto mt-20 px-3 sm:px-6">
-      <!-- <RouterView v-slot="{ Component, route }" class="route-view">
-        <Transition name="fade" mode="out-in">
-          <div :key="route.path">
-            <component :is="Component" />
-          </div>
-        </Transition>
-      </RouterView> -->
-
       <!-- <slot /> -->
 
       <NuxtPage />
