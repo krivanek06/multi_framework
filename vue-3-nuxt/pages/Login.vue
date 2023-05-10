@@ -24,7 +24,7 @@ const router = useRouter();
 
 const onSubmit = () => {
   authenticationStore.login(model.value);
-  router.push('/');
+  router.push('/anime');
 };
 </script>
 

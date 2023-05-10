@@ -31,14 +31,14 @@ definePageMeta({
 });
 
 const animeStore = useAnimeStore();
-const router = useRouter();
 
 const onFormSubmit = (value: AnimeTypeStore) => {
   animeStore.saveAnimeToStore(value);
 };
 
 function onDetails(data: AnimeTypeStore) {
-  router.push(`/anime/${data.selectedAnime.mal_id}`);
+  navigateTo(`/anime/${data.selectedAnime.mal_id}`);
+  // $route.params.id = data.selectedAnime.mal_id;
 }
 
 const onDelete = (data: AnimeTypeStore) => {
