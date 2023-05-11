@@ -1,14 +1,20 @@
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Comment from "unplugin-vue-components/vite";
+import VueMacros from "unplugin-vue-macros";
 import { defineConfig } from "vite";
 import eslintPlugin from "vite-plugin-eslint";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      reactivityTransform: true
+    VueMacros.vite({
+      plugins: {
+        vue: vue({
+          // used to use $ref()
+          reactivityTransform: true
+        })
+      }
     }),
     eslintPlugin(),
     Comment({

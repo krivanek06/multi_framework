@@ -18,7 +18,6 @@ declare module '@vue/runtime-core' {
     Banner: typeof import('./src/components/shared/Banner.vue')['default']
     CompCow: typeof import('./src/components/shared/CompCow.vue')['default']
     CompShark: typeof import('./src/components/shared/CompShark.vue')['default']
-    DashboardView: typeof import('./src/components/views/DashboardView.vue')['default']
     GeneralCard: typeof import('./src/components/shared/GeneralCard.vue')['default']
     InputModal: typeof import('./src/components/shared/InputModal.vue')['default']
     Loader: typeof import('./src/components/shared/Loader.vue')['default']
@@ -26,5 +25,6 @@ declare module '@vue/runtime-core' {
     MainLayout: typeof import('./src/components/views/MainLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./src/components/anime/Test.vue')['default']
   }
 }

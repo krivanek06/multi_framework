@@ -47,6 +47,8 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: AnimeData): void;
 }>();
 
+// const { modelValue } = defineModels<{ modelValue: AnimeData }>();
+
 const searchRef = ref<string>("");
 // remember the selected value
 const searchSelectedRef = ref<boolean>(false);

@@ -2,7 +2,7 @@
   <h2 class="mb-2 text-xl text-center text-green-800">Choose an Anime</h2>
   <form @submit.prevent="onSubmit">
     <!-- name search -->
-    <AnimeFormSearch v-model:model-value="model.selectedAnime" />
+    <AnimeFormSearch v-model="model.selectedAnime" />
 
     <!-- show text area checkbox -->
     <div class="flex items-center justify-end gap-4">
@@ -40,7 +40,6 @@
 import { useValidator } from "../../composable/useValidator";
 import type { AnimeFormType } from "../../models";
 import { AnimeTypeStore, User, useAuthenticationStore } from "../../store";
-import AnimeFormSearch from "./AnimeFormSearch.vue";
 
 const emit = defineEmits<{
   (e: "formSubmit", value: AnimeTypeStore): void;
