@@ -1,0 +1,21 @@
+{
+    "extends": [
+      "@nuxtjs/eslint-config-typescript"
+    ],
+    "rules": {
+        "vue/multi-word-component-names": "off",
+        "vue/max-attributes-per-line": "off",
+        "vue/html-self-closing": "off",
+        "vue/singleline-html-element-content-newline": "off",
+        "no-undef": "off",
+        "semi": [2, "always"],
+        "func-call-spacing": "off",
+        "no-tabs": "off",
+        "arrow-parens": "off",
+        "require-await": "off",
+        "no-unused-vars": "off",
+        "space-before-function-paren": "off",
+        "indent": "off",
+        "import/order": "off",
+    }
+  }

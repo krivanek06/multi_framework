@@ -10,6 +10,7 @@
         type="text"
         name="username"
         placeholder="Enter username"
+        class="text-gray-600"
       />
       <button type="submit">Login</button>
     </form>
@@ -17,15 +18,13 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthenticationStore } from "../../store";
-
-const model = ref<string>("");
+const model = ref<string>('');
 const authenticationStore = useAuthenticationStore();
 const router = useRouter();
 
 const onSubmit = () => {
   authenticationStore.login(model.value);
-  router.push("/anime");
+  router.push('/anime');
 };
 </script>
 
