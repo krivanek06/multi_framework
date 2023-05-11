@@ -13,8 +13,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'main-layout',
-  middleware: 'unauthenticated-access'
+  layout: 'main-layout'
 });
 </script>
 

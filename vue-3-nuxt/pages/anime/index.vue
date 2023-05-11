@@ -26,8 +26,7 @@
 import { AnimeTypeStore } from '~/types';
 
 definePageMeta({
-  layout: 'main-layout',
-  middleware: 'unauthenticated-access'
+  layout: 'main-layout'
 });
 
 const animeStore = useAnimeStore();
