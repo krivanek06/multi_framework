@@ -1,6 +1,11 @@
 <template>
   <section>
-    <SharedGeneralCard :title="animeData.selectedAnime.title" :show-edit-button="true" @edit-clicked="onModalDisplay">
+    <SharedGeneralCard
+      :display-life-cycle-hooks="true"
+      :title="animeData.selectedAnime.title"
+      :show-edit-button="true"
+      @edit-clicked="onModalDisplay"
+    >
       <AnimeDetails :anime-data="animeData" />
     </SharedGeneralCard>
 
@@ -39,14 +44,6 @@ const animeId = route.params.id as string;
 const animeData = animeStore.getAnimeTypeStoreById(Number(animeId)) as AnimeTypeStore;
 
 const dynamicComponent = shallowRef();
-
-onMounted(() => {
-  console.log('mounted');
-});
-
-onUnmounted(() => {
-  console.log('destroyed');
-});
 
 const onModalDisplay = () => {
   showModal.value = true;

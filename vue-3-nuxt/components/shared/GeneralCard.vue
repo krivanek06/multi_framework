@@ -6,7 +6,7 @@
       <div class="flex items-center gap-2">
         <Icon
           v-if="showEditButton"
-          name="material-symbols:edit"
+          icon="material-symbols:edit"
           class="w-8 h-8 cursor-pointer"
           @click="$emit('editClicked')"
         />
@@ -41,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
+
 const props = defineProps({
   title: {
     type: String,
@@ -57,6 +59,10 @@ const props = defineProps({
   showEditButton: {
     type: Boolean,
     default: false
+  },
+  displayLifeCycleHooks: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -65,6 +71,36 @@ defineEmits<{
   (e: 'detailsClicked', value: void): void;
   (e: 'editClicked', value: void): void;
 }>();
+
+onBeforeUpdate(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log('GeneralCard - onBeforeUpdate');
+  }
+});
+
+onBeforeUnmount(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log('GeneralCard - onBeforeUnmount');
+  }
+});
+
+onMounted(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log('GeneralCard - onMounted');
+  }
+});
+
+onUpdated((e) => {
+  if (props.displayLifeCycleHooks) {
+    console.log('GeneralCard - onUpdated', e);
+  }
+});
+
+onUnmounted(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log('GeneralCard - onUnmounted');
+  }
+});
 </script>
 
 <style scoped></style>

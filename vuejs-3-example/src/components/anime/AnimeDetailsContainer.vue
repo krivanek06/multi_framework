@@ -1,6 +1,11 @@
 <template>
   <section>
-    <GeneralCard :title="animeData.selectedAnime.title" :show-edit-button="true" @edit-clicked="onModalDisplay">
+    <GeneralCard
+      :display-life-cycle-hooks="true"
+      :title="animeData.selectedAnime.title"
+      :show-edit-button="true"
+      @edit-clicked="onModalDisplay"
+    >
       <AnimeDetails :anime-data="animeData" />
     </GeneralCard>
 

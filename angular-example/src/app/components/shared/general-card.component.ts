@@ -1,5 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+	AfterContentChecked,
+	AfterContentInit,
+	AfterViewChecked,
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	DoCheck,
+	EventEmitter,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	Output,
+	SimpleChanges,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -48,13 +63,71 @@ import { MatIconModule } from '@angular/material/icon';
 		</div>
 	`,
 })
-export class GeneralCardComponent {
+export class GeneralCardComponent
+	implements
+		OnInit,
+		OnChanges,
+		DoCheck,
+		AfterViewInit,
+		AfterViewChecked,
+		AfterContentInit,
+		AfterContentChecked,
+		OnDestroy
+{
 	@Output() deleteClicked = new EventEmitter<void>();
 	@Output() detailsClicked = new EventEmitter<void>();
 	@Output() editClicked = new EventEmitter<void>();
 
 	@Input() title!: string;
+	@Input() displayLifeCycleHooks: boolean = false;
 	@Input() showButtonDetails: boolean = false;
 	@Input() showButtonDelete: boolean = false;
 	@Input() showEditButton: boolean = false;
+
+	constructor() {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - constructor');
+		}
+	}
+
+	ngOnInit(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngOnInit');
+		}
+	}
+	ngOnChanges(changes: SimpleChanges): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngOnChanges', changes);
+		}
+	}
+	ngDoCheck(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngDoCheck');
+		}
+	}
+	ngAfterViewInit(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngAfterViewInit');
+		}
+	}
+	ngAfterViewChecked(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngAfterViewChecked');
+		}
+	}
+	ngAfterContentInit(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngAfterContentInit');
+		}
+	}
+	ngAfterContentChecked(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngAfterContentChecked');
+		}
+	}
+	ngOnDestroy(): void {
+		if (this.displayLifeCycleHooks) {
+			console.log('GeneralCardComponent - ngOnDestroy');
+		}
+	}
 }

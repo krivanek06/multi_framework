@@ -30,6 +30,7 @@ import { AnimeDetailsComponent } from './anime-details.component';
 	template: `
 		<ng-container *ngIf="selectedAnime() as anime; else loading">
 			<app-general-card
+				[displayLifeCycleHooks]="true"
 				[title]="anime.selectedAnime.title"
 				[showEditButton]="true"
 				(editClicked)="onModalDisplay(anime)"

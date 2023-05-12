@@ -59,6 +59,10 @@ const props = defineProps({
   showEditButton: {
     type: Boolean,
     default: false
+  },
+  displayLifeCycleHooks: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -67,6 +71,36 @@ defineEmits<{
   (e: "detailsClicked", value: void): void;
   (e: "editClicked", value: void): void;
 }>();
+
+onBeforeUpdate(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log("GeneralCard - onBeforeUpdate");
+  }
+});
+
+onBeforeUnmount(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log("GeneralCard - onBeforeUnmount");
+  }
+});
+
+onMounted(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log("GeneralCard - onMounted");
+  }
+});
+
+onUpdated((e) => {
+  if (props.displayLifeCycleHooks) {
+    console.log("GeneralCard - onUpdated", e);
+  }
+});
+
+onUnmounted(() => {
+  if (props.displayLifeCycleHooks) {
+    console.log("GeneralCard - onUnmounted");
+  }
+});
 </script>
 
 <style scoped></style>
