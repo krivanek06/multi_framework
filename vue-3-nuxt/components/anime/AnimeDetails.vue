@@ -8,7 +8,7 @@
       >
         {{ name }}
       </span>
-      <span> {{ value }} </span>
+      <span> {{ value ?? 0 }} </span>
     </div>
   </DefineTemplate>
 
@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import { AnimeTypeStore, hardMathEquationMemo } from '~/types';
 
-const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{ name: string; value: string | number }>();
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{ name: string; value: string | number | null }>();
 
 const props = defineProps<{
   animeData: AnimeTypeStore;

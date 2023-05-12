@@ -21,16 +21,16 @@ export type AnimeData = {
   title: string;
   title_english?: string;
   episodes: number;
-  score: number;
+  score?: number;
   duration: string;
   popularity: number;
   source: string;
   rank: number;
 };
 
-export const hardMathEquation = (animeScore: number): number => {
+export const hardMathEquation = (animeScore?: number | null): number => {
   console.log('%c hardMathEquation', 'color: #22fea3');
-  return round(evaluate(`4 * (2 + 4.5) + 3 ^ ${animeScore} + 123 - 4.3 / 3 /2 ^ 3 + 8 + 9 / 12`));
+  return round(evaluate(`4 * (2 + 4.5) + 3 ^ ${animeScore ?? 1} + 123 - 4.3 / 3 /2 ^ 3 + 8 + 9 / 12`));
 };
 
 export const hardMathEquationMemo = useMemoize((animeScore: number) => hardMathEquation(animeScore));
