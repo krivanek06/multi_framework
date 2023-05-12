@@ -29,6 +29,17 @@ definePageMeta({
   layout: 'main-layout'
 });
 
+useHead({
+  title: 'Anime',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'List of anime content'
+    }
+  ]
+});
+
 const animeStore = useAnimeStore();
 
 const onFormSubmit = (value: AnimeTypeStore) => {

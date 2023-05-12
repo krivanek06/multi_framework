@@ -7,7 +7,7 @@ import { AnimeFormComponent } from '../anime/anime-form.component';
 import { GeneralCardComponent } from '../shared/general-card.component';
 
 @Component({
-	selector: 'app-dashboard',
+	selector: 'app-anime-view',
 	standalone: true,
 	imports: [CommonModule, AnimeFormComponent, GeneralCardComponent, AnimeDetailsComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +34,7 @@ import { GeneralCardComponent } from '../shared/general-card.component';
 		</section>
 	`,
 })
-export class DashboardComponent {
+export class AnimeViewComponent {
 	animeStore = inject(AnimeService);
 	router = inject(Router);
 
@@ -54,6 +54,6 @@ export class DashboardComponent {
 export const route: Routes = [
 	{
 		path: '',
-		component: DashboardComponent,
+		component: AnimeViewComponent,
 	},
 ];

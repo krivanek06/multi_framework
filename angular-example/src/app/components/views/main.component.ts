@@ -14,7 +14,7 @@ import { routerAnimation } from './../../animations/router-default';
 	animations: [routerAnimation],
 	template: `
 		<nav class="flex items-center justify-between w-full gap-4 p-4 bg-green-700">
-			<a routerLink="/dashboard"> Dashboard </a>
+			<a routerLink="/anime"> Dashboard </a>
 			<a routerLink="/login" (click)="onLogOut()"> Logout </a>
 		</nav>
 

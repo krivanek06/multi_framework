@@ -15,6 +15,17 @@
 definePageMeta({
   layout: 'main-layout'
 });
+
+useHead({
+  title: 'Anime Details',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Description of an anime'
+    }
+  ]
+});
 </script>
 
 <style scoped></style>

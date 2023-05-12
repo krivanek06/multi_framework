@@ -22,12 +22,14 @@ const routes: Routes = [
 		children: [
 			{
 				path: '',
+				title: 'App Name - ',
 				component: MainComponent,
 				children: [
-					{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+					{ path: '', redirectTo: '/anime', pathMatch: 'full' },
 					{
-						path: 'dashboard',
-						loadChildren: () => import('./app/components/views/dashboard.component').then((m) => m.route),
+						path: 'anime',
+						title: 'Anime',
+						loadChildren: () => import('./app/components/views/anime-view.component').then((m) => m.route),
 						canActivate: [
 							(route: ActivatedRouteSnapshot) => {
 								const authenticationFacadeService = inject(AuthService);
@@ -43,12 +45,14 @@ const routes: Routes = [
 					},
 					{
 						path: 'anime/:id',
+						title: 'Anime Details',
 						loadChildren: () => import('./app/components/views/anime-details.component').then((m) => m.route),
 					},
 				],
 			},
 			{
 				path: 'login',
+				title: 'Login',
 				loadChildren: () =>
 					import('./app/components/views/login-view.component').then((m) => [
 						{ path: '', component: LoginViewComponent },

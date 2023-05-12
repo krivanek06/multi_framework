@@ -18,6 +18,17 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Login',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Login to the application'
+    }
+  ]
+});
+
 const model = ref<string>('');
 const authenticationStore = useAuthenticationStore();
 const router = useRouter();

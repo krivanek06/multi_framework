@@ -17,11 +17,26 @@ const router = createRouter({
     {
       path: "/",
       component: Main, // eager load
+      meta: {
+        title: ""
+      },
       children: [
         // lazy load
         { path: "", redirect: "/anime" },
-        { path: "anime", component: () => import("./components/views/AnimeView.vue") },
-        { path: "anime/:id", component: () => import("./components/views/AnimeDetailsView.vue") }
+        {
+          path: "anime",
+          meta: {
+            title: "Anime"
+          },
+          component: () => import("./components/views/AnimeView.vue")
+        },
+        {
+          path: "anime/:id",
+          meta: {
+            title: "Anime Details"
+          },
+          component: () => import("./components/views/AnimeDetailsView.vue")
+        }
       ]
     },
     { path: "/login", component: Login }
@@ -30,6 +45,11 @@ const router = createRouter({
     // always scroll to top
     return { top: 0 };
   }
+});
+
+router.beforeEach((to, from, next): void => {
+  document.title = "App Name - " + (to.meta.title as string);
+  return next();
 });
 
 router.beforeEach(async (to, from, next): Promise<void> => {

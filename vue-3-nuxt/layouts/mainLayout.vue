@@ -29,6 +29,10 @@ const onLogOut = () => {
   authenticationStore.logout();
   animeStore.clearAnimeStore();
 };
+
+useHead({
+  titleTemplate: 'App Name - %s'
+});
 </script>
 
 <style scss>
