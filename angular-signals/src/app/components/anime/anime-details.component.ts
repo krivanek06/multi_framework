@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AnimeTypeStore } from '../../services/anime.service';
-import { HardMathEquationPipe } from './../../pipes/hard-math-equation.pipe';
+import { HardMathEquationPipe } from '../../pipes/hard-math-equation.pipe';
 
 @Component({
 	selector: 'app-anime-details',

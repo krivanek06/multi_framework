@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { AnimeData } from '../models/api-anime-data.model';
-import { AnimeApiService } from './../api/anime-api.service';
+import { AnimeApiService } from '../api/anime-api.service';
 import { User } from './auth.service';
 
 export type AnimeTypeStore = {

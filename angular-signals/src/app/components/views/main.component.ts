@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { StickyDirective } from '../../directives/sticky.directive';
 import { AuthService } from '../../services/auth.service';
 import { BannerComponent } from '../shared/banner.component';
-import { routerAnimation } from './../../animations/router-default';
+import { routerAnimation } from '../../animations/router-default';
 
 @Component({
 	selector: 'app-main',
