@@ -10,6 +10,21 @@ export interface HttpClient {
 }
 
 export class GeneralHttpClient implements HttpClient {
+  constructor() {
+    axios.interceptors.request.use((config) => {
+      console.log("axios interceptor config");
+      return config;
+    });
+
+    axios.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        this.handleError(error);
+        return Promise.reject(error);
+      }
+    );
+  }
+
   async get<T = unknown>(path: string): Promise<HttpClientResponse<T>> {
     try {
       const response = await axios.get(path);

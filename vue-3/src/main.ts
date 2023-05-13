@@ -47,11 +47,13 @@ const router = createRouter({
   }
 });
 
+// Add title to each route
 router.beforeEach((to, from, next): void => {
   document.title = "App Name - " + (to.meta.title as string);
   return next();
 });
 
+// authentication guard
 router.beforeEach(async (to, from, next): Promise<void> => {
   const authenticationStore = useAuthenticationStore();
 

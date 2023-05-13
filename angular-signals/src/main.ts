@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom, inject } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -10,6 +10,7 @@ import {
 	provideRouter,
 	withPreloading,
 } from '@angular/router';
+import { RequestInterceptorService } from './app/api';
 import { AppComponent } from './app/app.component';
 import { LoginViewComponent } from './app/components/views/login-view.component';
 import { MainComponent } from './app/components/views/main.component';
@@ -67,5 +68,10 @@ bootstrapApplication(AppComponent, {
 		importProvidersFrom(HttpClientModule),
 		provideRouter(routes, withPreloading(PreloadAllModules)),
 		provideAnimations(),
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RequestInterceptorService,
+			multi: true,
+		},
 	],
 });
