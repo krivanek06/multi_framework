@@ -21,6 +21,7 @@
       <div class="flex items-center justify-center gap-4 mb-10">
         <button class="bg-blue-500 general" @click="dynamicComponent = CompShark">Shark</button>
         <button class="bg-white general" @click="dynamicComponent = CompCow">Cow</button>
+        <button class="bg-red-400 general" @click="onThrowError">Throw Error</button>
       </div>
 
       <!-- dynamic component -->
@@ -56,6 +57,10 @@ const onModalCancel = () => {
 const onModalConfirm = (newValue: string) => {
   animeStore.editAnimeInStore(animeData.selectedAnime.mal_id, newValue);
   showModal.value = false;
+};
+
+const onThrowError = () => {
+  throw new Error('This is an error');
 };
 
 // used to display loading state for suspense
