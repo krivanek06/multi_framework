@@ -7,10 +7,6 @@
 <script setup lang="ts">
 import { useImage } from '@vueuse/core';
 
-onMounted(() => {
-  console.log('[Cow] component on Mounted');
-});
-
 const imageOptions = ref({
   src: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80'
 });

@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
+import { Icon } from "@iconify/vue";
 
 const props = defineProps({
   title: {
@@ -67,38 +67,38 @@ const props = defineProps({
 });
 
 defineEmits<{
-  (e: 'deleteClicked', value: void): void;
-  (e: 'detailsClicked', value: void): void;
-  (e: 'editClicked', value: void): void;
+  (e: "deleteClicked", value: void): void;
+  (e: "detailsClicked", value: void): void;
+  (e: "editClicked", value: void): void;
 }>();
 
 onBeforeUpdate(() => {
   if (props.displayLifeCycleHooks) {
-    console.log('GeneralCard - onBeforeUpdate');
+    console.log("GeneralCard - onBeforeUpdate");
   }
 });
 
 onBeforeUnmount(() => {
   if (props.displayLifeCycleHooks) {
-    console.log('GeneralCard - onBeforeUnmount');
+    console.log("GeneralCard - onBeforeUnmount");
   }
 });
 
 onMounted(() => {
   if (props.displayLifeCycleHooks) {
-    console.log('GeneralCard - onMounted');
+    console.log("GeneralCard - onMounted");
   }
 });
 
 onUpdated((e) => {
   if (props.displayLifeCycleHooks) {
-    console.log('GeneralCard - onUpdated', e);
+    console.log("GeneralCard - onUpdated", e);
   }
 });
 
 onUnmounted(() => {
   if (props.displayLifeCycleHooks) {
-    console.log('GeneralCard - onUnmounted');
+    console.log("GeneralCard - onUnmounted");
   }
 });
 </script>

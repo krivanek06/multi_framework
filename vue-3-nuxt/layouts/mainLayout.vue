@@ -8,16 +8,18 @@
     <!-- banner -->
     <SharedBanner :banner-time="8" />
 
-    <!-- bottom sticky -->
-    <div v-sticky:bottom>This is a bottom</div>
-
-    <h3 class="mt-20 text-xl text-center">Welcome: {{ authenticationStore.user?.name }}</h3>
+    <div class="flex items-center justify-around gap-10 mt-20">
+      <h3 class="text-xl">Welcome: {{ authenticationStore.user?.name }}</h3>
+      <NuxtLink class="bg-red-400 general" to="/lololo">Non Existing Route</NuxtLink>
+    </div>
 
     <main class="w-full max-w-[840px] mx-auto mt-20 px-3 sm:px-6">
       <!-- <slot /> -->
-
       <NuxtPage />
     </main>
+
+    <!-- bottom sticky -->
+    <div v-sticky:bottom>This is a bottom</div>
   </div>
 </template>
 
@@ -29,6 +31,10 @@ const onLogOut = () => {
   authenticationStore.logout();
   animeStore.clearAnimeStore();
 };
+
+useHead({
+  titleTemplate: 'App Name - %s'
+});
 </script>
 
 <style scss>

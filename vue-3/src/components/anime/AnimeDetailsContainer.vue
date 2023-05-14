@@ -1,18 +1,18 @@
 <template>
   <section>
-    <SharedGeneralCard
+    <GeneralCard
       :display-life-cycle-hooks="true"
       :title="animeData.selectedAnime.title"
       :show-edit-button="true"
       @edit-clicked="onModalDisplay"
     >
       <AnimeDetails :anime-data="animeData" />
-    </SharedGeneralCard>
+    </GeneralCard>
 
-    <SharedInputModal
+    <InputModal
       :show-modal="showModal"
       :input-value="animeData.description"
-      @confirm-clicked="(e: string) => onModalConfirm(e)"
+      @confirm-clicked="(e) => onModalConfirm(e)"
       @cancel-clicked="onModalCancel"
     />
 
@@ -21,7 +21,6 @@
       <div class="flex items-center justify-center gap-4 mb-10">
         <button class="bg-blue-500 general" @click="dynamicComponent = CompShark">Shark</button>
         <button class="bg-white general" @click="dynamicComponent = CompCow">Cow</button>
-        <button class="bg-red-400 general" @click="onThrowError">Throw Error</button>
       </div>
 
       <!-- dynamic component -->
@@ -33,9 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { AnimeTypeStore } from '~/types';
-import CompCow from '../shared/CompCow.vue';
-import CompShark from '../shared/CompShark.vue';
+import { AnimeTypeStore, useAnimeStore } from "../../store/anime.store";
+import CompCow from "../shared/CompCow.vue";
+import CompShark from "../shared/CompShark.vue";
 
 const route = useRoute();
 const animeStore = useAnimeStore();
@@ -45,6 +44,14 @@ const animeId = route.params.id as string;
 const animeData = animeStore.getAnimeTypeStoreById(Number(animeId)) as AnimeTypeStore;
 
 const dynamicComponent = shallowRef();
+
+onMounted(() => {
+  console.log("mounted");
+});
+
+onUnmounted(() => {
+  console.log("destroyed");
+});
 
 const onModalDisplay = () => {
   showModal.value = true;
@@ -59,12 +66,16 @@ const onModalConfirm = (newValue: string) => {
   showModal.value = false;
 };
 
-const onThrowError = () => {
-  throw new Error('This is an error');
-};
-
 // used to display loading state for suspense
-await $fetch('/api/anime/get-by-id');
+const loadingPromise = () =>
+  new Promise<void>((resolve, rej) => {
+    setTimeout(() => {
+      console.log("resolved promise");
+      resolve();
+    }, 3000);
+  });
+
+await loadingPromise();
 </script>
 
 <style scoped lang="sass"></style>
