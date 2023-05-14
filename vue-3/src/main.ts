@@ -5,6 +5,7 @@ import App from "./App.vue";
 
 import Login from "./components/views/LoginView.vue";
 import Main from "./components/views/MainLayout.vue";
+import NotFound from "./components/views/NotFound.vue";
 import { displayForTime } from "./directives/display-for-time";
 import { sticky } from "./directives/sticky";
 import { useAuthenticationStore } from "./store";
@@ -39,7 +40,16 @@ const router = createRouter({
         }
       ]
     },
-    { path: "/login", component: Login }
+    { path: "/login", component: Login },
+    {
+      path: "/404",
+      name: "NotFound",
+      component: NotFound
+    },
+    {
+      path: "/:catchAll(.*)",
+      redirect: "404"
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top

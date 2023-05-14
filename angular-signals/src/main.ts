@@ -14,6 +14,7 @@ import { RequestInterceptorService } from './app/api';
 import { AppComponent } from './app/app.component';
 import { LoginViewComponent } from './app/components/views/login-view.component';
 import { MainComponent } from './app/components/views/main.component';
+import { NotFoundComponent } from './app/components/views/not-found';
 import { AuthService } from './app/services/auth.service';
 
 const routes: Routes = [
@@ -58,6 +59,16 @@ const routes: Routes = [
 					import('./app/components/views/login-view.component').then((m) => [
 						{ path: '', component: LoginViewComponent },
 					]),
+			},
+			{
+				path: '404',
+				title: 'NotFound',
+				component: NotFoundComponent,
+			},
+			{
+				path: '**',
+				redirectTo: '404',
+				pathMatch: 'full',
 			},
 		],
 	},
