@@ -18,11 +18,15 @@ This repo was created to represent basic usage of multiple frameworks by buildin
 - Data manipulation in DOM
 - Routing
   - Navigating between components
+  - Router animation 
   - Eager vs Lazy loading 
+  - Router title
   - Guards
+  - Error handling non-existing routes
 - Content rendering
   - Content projection
   - Lazy loaded template
+- HTTP interceptors
 - Modal
 - Dynamic components
 - Directives
