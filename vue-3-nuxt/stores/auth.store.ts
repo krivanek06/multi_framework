@@ -3,12 +3,11 @@ import { User } from '~/types';
 export const useAuthenticationStore = defineStore({
   id: 'authentication',
   state: () => {
-    const user = useLocalStorage<User | null>('authenticationUser', {} as User);
-    console.log('read dom', user);
-
-    return {
-      user
+    const user: User = {
+      name: ''
     };
+
+    return { user };
   },
   actions: {
     login(name: string) {
@@ -17,7 +16,9 @@ export const useAuthenticationStore = defineStore({
       };
     },
     logout() {
-      this.user = null;
+      this.user = {
+        name: ''
+      };
     }
   },
   getters: {

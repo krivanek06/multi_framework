@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/scss/styles.scss'],
-  ssr: true,
+  // turning SSR on will cause 'storage: persistedState.localStorage' to fail
+  ssr: false,
   components: true,
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
