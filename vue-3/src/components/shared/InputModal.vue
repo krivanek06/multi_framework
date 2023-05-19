@@ -9,7 +9,7 @@
       leave-to-class="scale-95 translate-y-0 translate-y-10 opacity-0"
     >
       <div
-        v-if="prop.showModal"
+        v-if="showModal"
         ref="modal"
         class="fixed inset-0 z-10 p-6 overflow-y-auto bg-black bg-opacity-50"
         role="dialog"
@@ -49,7 +49,7 @@ import { vOnClickOutside } from "@vueuse/components";
 
 const input = ref<string>("");
 
-const prop = defineProps({
+const { showModal, inputValue } = definePropsRefs({
   showModal: {
     type: Boolean,
     required: false
@@ -62,7 +62,7 @@ const prop = defineProps({
 });
 
 watchEffect(() => {
-  input.value = prop.inputValue;
+  input.value = inputValue.value;
 });
 
 defineEmits<{
