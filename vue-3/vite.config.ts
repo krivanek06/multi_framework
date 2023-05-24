@@ -12,7 +12,11 @@ export default defineConfig({
       plugins: {
         vue: vue({
           // used to use $ref()
-          reactivityTransform: true
+          reactivityTransform: true,
+          script: {
+            defineModel: true,
+            propsDestructure: true
+          }
         })
       }
     }),
