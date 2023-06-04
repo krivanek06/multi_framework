@@ -9,7 +9,7 @@
     <SharedBanner :banner-time="8" />
 
     <div class="flex items-center justify-around gap-10 mt-20">
-      <h3 class="text-xl">Welcome: {{ authenticationStore.user?.name }}</h3>
+      <h3 class="text-xl">Welcome: {{ user?.email }}</h3>
       <NuxtLink class="bg-red-400 general" to="/lololo">Non Existing Route</NuxtLink>
     </div>
 
@@ -24,11 +24,13 @@
 </template>
 
 <script setup lang="ts">
-const authenticationStore = useAuthenticationStore();
+const user = useSupabaseUser();
+const auth = useSupabaseAuthClient();
+
 const animeStore = useAnimeStore();
 
 const onLogOut = () => {
-  authenticationStore.logout();
+  auth.auth.signOut();
   animeStore.clearAnimeStore();
 };
 

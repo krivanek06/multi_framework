@@ -1,11 +1,15 @@
-export default defineNuxtRouteMiddleware(async (to, from) => {
-  const authenticationStore = useAuthenticationStore();
+export default defineNuxtRouteMiddleware((to, from) => {
+  const user = useSupabaseUser();
   console.log('middleware/auth');
   // console.log('to', to);
   // console.log('from', from);
-  console.log('Authenticated name: ', authenticationStore.getUser?.name);
+  // console.log('Authenticated name: ', user.value);
   // prevent unauthenticated access
-  if (!authenticationStore.getUser?.name && to.path !== '/login') {
+  if (!user.value && to.path !== '/login') {
+    console.log('login');
     return navigateTo('/login');
+  } else if (user.value && to.path === '/login') {
+    console.log('anime');
+    return navigateTo('/anime');
   }
 });

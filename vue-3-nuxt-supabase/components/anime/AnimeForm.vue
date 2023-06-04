@@ -36,13 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import { AnimeFormType, AnimeTypeStore, User } from '~/types';
+import { AnimeFormType, AnimeTypeStoreForm } from '~/types';
 
 const emit = defineEmits<{
-  (e: 'formSubmit', value: AnimeTypeStore): void;
+  (e: 'formSubmit', value: AnimeTypeStoreForm): void;
 }>();
 
-const authenticationStore = useAuthenticationStore();
 const showTextArea = ref(false);
 
 // need to use REF so that when form is rested it will be reflected on UI
@@ -112,8 +111,7 @@ const onSubmit = () => {
   emit('formSubmit', {
     selectedAnime: modelValues.selectedAnime,
     description: modelValues.description,
-    isCool: modelValues.isCool,
-    user: authenticationStore.getUser as User
+    isCool: modelValues.isCool
   });
 
   clearForm();

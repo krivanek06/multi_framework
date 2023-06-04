@@ -23,7 +23,9 @@
 </template>
 
 <script setup lang="ts">
-import { AnimeTypeStore } from '~/types';
+import { AnimeTypeStore, AnimeTypeStoreForm } from '~/types';
+const client = useSupabaseClient();
+const user = useSupabaseUser();
 
 definePageMeta({
   layout: 'main-layout'
@@ -42,8 +44,11 @@ useHead({
 
 const animeStore = useAnimeStore();
 
-const onFormSubmit = (value: AnimeTypeStore) => {
-  animeStore.saveAnimeToStore(value);
+const onFormSubmit = async (value: AnimeTypeStoreForm) => {
+  // animeStore.saveAnimeToStore(value);
+  const newAnime: AnimeTypeStore = { ...value, userId: user.value?.id ?? '' };
+  const { data } = await client.from('favourite_anime').insert([newAnime]);
+  console.log(data);
 };
 
 function onDetails(data: AnimeTypeStore) {

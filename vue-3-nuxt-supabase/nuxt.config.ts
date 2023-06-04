@@ -1,8 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/scss/styles.scss'],
+  // vite: {
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: '@import "@/assets/scss/styles.scss";'
+  //       }
+  //     }
+  //   }
+  // },
   // turning SSR on will cause 'storage: persistedState.localStorage' to fail
-  ssr: false,
+  ssr: true,
   components: true,
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
@@ -28,6 +37,7 @@ export default defineNuxtConfig({
         autoImports: ['defineStore', 'acceptHMRUpdate']
       }
     ],
-    '@pinia-plugin-persistedstate/nuxt'
+    //  '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/supabase'
   ]
 });
