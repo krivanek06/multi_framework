@@ -5,7 +5,7 @@ const ANIME_API = 'https://api.jikan.moe/v4/anime';
 export default defineEventHandler(async (event) => {
   const { query } = getQuery(event);
 
-  const response = (await $fetch(`${ANIME_API}?q=${query}&limit=6`)) as { data: AnimeData[] };
+  const response = await $fetch<{ data: AnimeData[] }>(`${ANIME_API}?q=${query}&limit=6`);
 
   return response?.data ?? [];
 });

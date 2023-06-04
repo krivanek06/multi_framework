@@ -1,12 +1,11 @@
 import { AnimeData } from './api-anime-data.model';
 
-export type User = {
-  name: string;
-};
-
-export type AnimeTypeStore = {
+export type AnimeTypeStoreForm = {
   selectedAnime: AnimeData;
   description: string;
   isCool: boolean;
-  user: User;
+};
+
+export type AnimeTypeStore = AnimeTypeStoreForm & {
+  userId: string;
 };

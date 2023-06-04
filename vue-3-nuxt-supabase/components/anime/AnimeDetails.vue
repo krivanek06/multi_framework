@@ -14,7 +14,7 @@
 
   <article>
     <div class="flex gap-4 mb-2">
-      <ReuseTemplate name="User" :value="props.animeData.user.name" />
+      <ReuseTemplate name="User" :value="props.animeData.userId" />
 
       <div v-if="props.animeData.description" class="w-[2px] bg-gray-300"></div>
 
