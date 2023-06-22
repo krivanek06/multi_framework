@@ -63,6 +63,8 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 
 	animeService = inject(AnimeService);
 
+	private selectedValue = signal<AnimeData | null>(null);
+
 	onChange: (value: AnimeData) => void = () => {};
 	onTouched = () => {};
 
@@ -78,7 +80,6 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 
 	effectRef = effect(
 		() => {
-			console.log('effect');
 			// Store signal values (must be done syncronously)
 			const search = this.searchRef();
 			const searchSelectedRef = this.searchSelectedRef();
@@ -87,6 +88,10 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 		},
 		{ allowSignalWrites: true }
 	);
+
+	effectRef1 = effect(() => {
+		console.log('Parent changing Anime Form search prop', this.selectedValue());
+	});
 
 	errors = computed(() => {
 		const modelValue = this.searchRef();
@@ -128,6 +133,8 @@ export class AnimeFormSearchComponent implements ControlValueAccessor {
 
 		// emit event to parent
 		this.onChange(data);
+
+		this.selectedValue.set(data);
 	}
 
 	/*
